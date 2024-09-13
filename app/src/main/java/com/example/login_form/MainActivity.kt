@@ -38,8 +38,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.login_form.ui.theme.Login_formTheme
 
-val PrimaryColor = Color(0xFF6F00EE)
+val primaryColor = Color(0xFF6F00EE)
 val unfocusedColor = Color.Gray
+
+@Composable
+fun customTextFieldColors() = OutlinedTextFieldDefaults.colors(
+    focusedTextColor = Color.Black,
+    unfocusedTextColor = Color.Black,
+    focusedContainerColor = Color.Transparent,
+    unfocusedContainerColor = Color.Transparent,
+    disabledContainerColor = Color.Transparent,
+    errorContainerColor = Color.Transparent,
+    cursorColor = primaryColor,
+    focusedBorderColor = primaryColor,
+    unfocusedBorderColor = unfocusedColor,
+    focusedLabelColor = primaryColor,
+    unfocusedLabelColor = unfocusedColor
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,19 +101,7 @@ fun Login_form(modifier: Modifier = Modifier) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             trailingIcon = { Icon(Icons.Filled.Email, contentDescription = "Email") },
             modifier = Modifier.fillMaxWidth(),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black,
-                focusedContainerColor = Color.Transparent,
-                unfocusedContainerColor = Color.Transparent,
-                disabledContainerColor = Color.Transparent,
-                errorContainerColor = Color.Transparent,
-                cursorColor = PrimaryColor,
-                focusedBorderColor = PrimaryColor,
-                unfocusedBorderColor = unfocusedColor,
-                focusedLabelColor = PrimaryColor,
-                unfocusedLabelColor = unfocusedColor,
-            )
+            colors = customTextFieldColors()
         )
 
         Spacer(modifier = Modifier.padding(4.dp))
@@ -111,30 +114,18 @@ fun Login_form(modifier: Modifier = Modifier) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = { Icon(Icons.Filled.Lock, contentDescription = "Password") },
             modifier = Modifier.fillMaxWidth(),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black,
-                focusedContainerColor = Color.Transparent,
-                unfocusedContainerColor = Color.Transparent,
-                disabledContainerColor = Color.Transparent,
-                errorContainerColor = Color.Transparent,
-                cursorColor = PrimaryColor,
-                focusedBorderColor = PrimaryColor,
-                unfocusedBorderColor = unfocusedColor,
-                focusedLabelColor = PrimaryColor,
-                unfocusedLabelColor = unfocusedColor,
-            )
+            colors = customTextFieldColors()
         )
         Button(
             onClick = { },
             colors = ButtonDefaults.buttonColors(
-                containerColor = PrimaryColor,
+                containerColor = primaryColor,
                 contentColor = Color.White
             ),
             modifier = modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp),
-            shape = MaterialTheme.shapes.small
+            shape = MaterialTheme.shapes.extraSmall
         ) {
             Text(text = "Submit")
         }
